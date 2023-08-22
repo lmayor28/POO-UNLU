@@ -32,7 +32,7 @@ public class ListaEnlazada {
           return;
       }
 
-      Nodo nodoAux = new Nodo();
+      Nodo nodoAux;
       Nodo nodoAnterior = new Nodo();
       nodoAux = primero;
 
@@ -47,7 +47,7 @@ public class ListaEnlazada {
           nodoAux = nodoAux.getProximo();
           nodoAnterior = nodoAux;
       }
-    };
+    }
 
     public Object recuperar(Integer pos){
         if (this.esVacia()){
