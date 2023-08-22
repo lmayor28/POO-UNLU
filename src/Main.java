@@ -15,6 +15,8 @@ public class Main {
         System.out.println(listaEnlazada.recuperar(1));
         System.out.println(listaEnlazada.recuperar(2));
 
+        System.out.println("Como andan ??");
+
 
 
         // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
