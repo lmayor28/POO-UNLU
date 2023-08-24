@@ -1,3 +1,6 @@
+import Clases.ListaEnlazada;
+import Clases.Pila;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -17,10 +20,21 @@ public class Main {
 
         System.out.println("Como andan ??");
 
+        Pila pila = new Pila();
 
+        pila.apilar("Hola");
+        pila.apilar(" Mundo");
+
+        System.out.println("Pila resultados");
+        System.out.println(pila.recuperar());
+        pila.desapilar();
+        System.out.println(pila.recuperar());
+
+    }
+}
 
         // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        /*for (int i = 1; i <= 5; i++)
 
             // Press Mayús+F9 to start debugging your code. We have set one breakpoint
             // for you, but you can always add more by pressing Ctrl+F8.
@@ -28,4 +42,4 @@ public class Main {
         }
 
     }
-}
+}*/
