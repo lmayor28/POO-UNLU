@@ -1,3 +1,5 @@
+package Ejecutable;
+
 import Clases.Cola;
 
 import java.util.Random;
