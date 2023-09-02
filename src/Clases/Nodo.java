@@ -6,10 +6,15 @@ public class Nodo {
 
     // Constructor
     public Nodo(Object dato) {
-        this.dato = dato;
+        this(dato,  null);
     }
-    public Nodo(Object dato, int Numero){
-
+    public Nodo(Object dato, Nodo anterior){
+        this(dato, anterior, null);
+    }
+    public Nodo(Object dato, Nodo anterior, Nodo proximo){
+        this.dato = dato;
+        this.proximo = proximo;
+        this.anterior = anterior;
     }
 
     // Getters y Setters

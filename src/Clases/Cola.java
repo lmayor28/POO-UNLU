@@ -8,16 +8,14 @@ public class Cola {
         return head == null;
     }
 
-    public Object desencolar(){
+    public void desencolar(){
         if (esVacia()){
-            return null;
+            return;
         }
-        Object head = this.head.getDato();
-        this.head = this.head.getProximo();
-        if (this.head == null){
+        head = head.getProximo();
+        if (head == null){
             tail = null;
         }
-        return head;
     }
 
     public void encolar(Object dato){
