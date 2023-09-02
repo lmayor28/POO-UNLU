@@ -33,7 +33,7 @@ public class Pila {
     /*
     public int longitud(){
         Nodo nodoAux = tope;
-        int cantidad = 0;
+        int cantidad = 0;´´
         while (nodoAux != null){
             cantidad += 1;
             nodoAux = nodoAux.getProximo();

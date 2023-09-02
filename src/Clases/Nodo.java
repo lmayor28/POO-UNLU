@@ -2,7 +2,8 @@ package Clases;
 
 public class Nodo {
     private Object dato;
-    private Nodo proximo = null;
+    private Nodo proximo;
+    private Nodo anterior;
 
     // Constructor
     public Nodo(Object dato) {
@@ -31,7 +32,12 @@ public class Nodo {
     public Nodo getProximo() {
         return proximo;
     }
+    public void setAnterior(Nodo anterior){
+        this.anterior = anterior;
+    }
 
-
+    public Nodo getAnterior() {
+        return anterior;
+    }
     // Funciones Extras
 }

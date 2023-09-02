@@ -15,8 +15,14 @@ public class PruebasCola {
         }
 
         while (!cola.esVacia()){
-            System.out.println("Objeto: " + cola.desencolar().toString());
-        }
+            System.out.println("Objeto: " + cola.recuperar());
+            cola.desencolar();
 
+        }
+        //System.out.println("Objeto:" + cola.recuperar());
+
+        if(cola.esVacia()){
+            System.out.println("La cola esta vacia");
+        }
     }
 }

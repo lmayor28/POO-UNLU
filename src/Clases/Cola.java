@@ -29,4 +29,10 @@ public class Cola {
         tail.setProximo(newNodo);
         tail = newNodo;
     }
+    public Object recuperar(){
+        if (esVacia()){
+            return "La cola esta vacia";
+        }
+        return head.getDato();
+    }
 }
