@@ -2,19 +2,18 @@ package TP1.EJ8;
 
 import Clases.ListaEnlazada;
 
+import java.util.Scanner;
+
 public class EjecutableEJ8 {
     public static void main(String[] strings){
-        GeneradoContrasenias generadoContrasenias = new GeneradoContrasenias();
 
-        System.out.println("El generado de contraseñas se ha generado y estas son 5 contraseñas que se han generado:");
-        ListaEnlazada contrasenias = new ListaEnlazada();
+        AdministradorDeContrasenias generadorContrasenias = new AdministradorDeContrasenias();
+        System.out.println("El generador de contraseñas se ha creado..");
 
-        for (int i = 0; i < 5; i++){
-            String contrasenia = generadoContrasenias.generarContrasenia();
-            System.out.println("Contraseña " + (i + 1) + ": " + contrasenia + ". Es fuerte?? " +
-                    (generadoContrasenias.esFuerte(contrasenia) ? "Si" : "No"));
-            contrasenias.agregarElemento(contrasenia);
-        }
-        System.out.println(contrasenias);
+        System.out.print("Ingrese la cantidad de contraseñas a generar: ");
+        Scanner scanner = new Scanner(System.in);
+        generadorContrasenias.generarContrasenias(scanner.nextInt());
+        System.out.println("La cantidad de contraseñas generadas es: " + generadorContrasenias.cantidadContrasenias());
+        System.out.println(generadorContrasenias.mostrarContrasenias());
     }
 }

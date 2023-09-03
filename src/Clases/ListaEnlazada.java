@@ -118,6 +118,10 @@ public class ListaEnlazada {
         return false;
     }
 
+    public Iterador iterador(){
+        return new Iterador(primero);
+    }
+
     public String toString() {
         //imprime por pantalla la lista de los nodos.
         String acumulador = "";//acumulador de strings.
