@@ -30,7 +30,7 @@ public class AdministradorDeContrasenias {
         Iterador iter = contrasenias.iterador();
         String resultado = "";
         while (iter != null){
-            Object contrasenia = iter.siguiente();
+            Object contrasenia = iter.next();
             if (contrasenia == null) break;
             resultado += ("Contraseña: " + contrasenia + " - " +
                               (this.esFuerte(contrasenia.toString()) ? "Fuerte\n" : "Debil\n"));

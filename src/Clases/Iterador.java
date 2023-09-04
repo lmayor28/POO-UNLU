@@ -1,23 +1,26 @@
 package Clases;
 
-public class Iterador {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Iterador implements Iterator<Object> {
     private Nodo nodo;
 
-    // Contructor
-    public Iterador(Nodo nodo){
+    // Constructor
+    public Iterador(Nodo nodo) {
         this.nodo = nodo;
     }
 
-    //
-    public boolean esVacia(){
-        return this.nodo == null;
+    @Override
+    public boolean hasNext() {
+        return nodo != null;
     }
 
-    public Object siguiente(){
-        if (esVacia()){
-            return null;
+    @Override
+    public Object next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
-
         Object dato = nodo.getDato();
         nodo = nodo.getProximo();
         return dato;

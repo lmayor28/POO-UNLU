@@ -1,6 +1,6 @@
 package Clases;
 
-public class ListaEnlazada {
+public class ListaEnlazada implements Iterable<Object> {
     private Nodo primero = null;
     private Nodo ultimo = null;
     private Integer longitud = 0;
@@ -118,7 +118,7 @@ public class ListaEnlazada {
         return false;
     }
 
-    public Iterador iterador(){
+    public Iterador iterator() {
         return new Iterador(primero);
     }
 
@@ -138,5 +138,6 @@ public class ListaEnlazada {
         }
         return acumulador;
     }
+
 }
 
