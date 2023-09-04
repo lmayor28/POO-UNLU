@@ -8,13 +8,26 @@ public class Tarea {
     public enum Estado {
         incompleta,
         completa,
-        vencida
-    }
-    private String descripcion;
-    private int prioridad;
-    private Estado estado;
-    private LocalDate fechaLimite;
-    private LocalDate fechaCompletada;
+        vencida,
+        porVencer;
+
+        @Override
+        public String toString(){
+            return switch (this){
+                case incompleta -> "Incompleta";
+                case completa -> "Completa";
+                case vencida -> "Vencida";
+                case porVencer -> "Por vencer";
+                default -> throw new IllegalArgumentException();
+            };
+        } // FIN TO STRING
+    } // FIN ENUM ESTADO
+
+    protected String descripcion;
+    protected int prioridad;
+    protected Estado estado;
+    protected LocalDate fechaLimite;
+    protected LocalDate fechaCompletada;
 
 //    Constructor:
     public Tarea(String descripcion, int prioridad){
@@ -75,7 +88,12 @@ public class Tarea {
     }
     public void mostrarTarea(){
 //        System.out.println("Estado: " + getEstado() +".\n Tarea: " + getDescripcion() + ".\n Prioridad: " + getPrioridad());
-        System.out.println("Tarea: " + getDescripcion() + "\n Estado: " + getEstado() + ".\n Prioridad: " + getPrioridad());
+//        System.out.println("Tarea: " + getDescripcion() + "\n Estado: " + getEstado() + ".\n Prioridad: " + getPrioridad());
+        System.out.println("Tarea: " + getDescripcion() +
+                "\n Estado: " + getEstado() +
+                ".\n Prioridad: " + getPrioridad() +
+                ".\n Fecha de vencimiento: " + (this.fechaLimite == null ? " Sin definir " : this.fechaLimite)
+        );
     }
     public boolean tareaVencida(){
         return this.estado == Estado.vencida;
