@@ -1,8 +1,6 @@
-package Ejecutable;
+package TP1.EJ3;
 
-import Clases.Pila;
-
-import java.util.Random;
+import TP1.EJ3.Pila;
 
 public class Pruebas_Pila {
     public static void main(String[] args){
@@ -25,8 +23,6 @@ public class Pruebas_Pila {
         if(pila.esVacia()){
             System.out.println("pila vacia.");
         }
-        System.out.println(pila.recuperar());
-
         System.out.println("-------------------------------------------------------------");
     }
 }

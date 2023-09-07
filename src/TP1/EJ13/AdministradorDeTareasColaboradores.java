@@ -1,4 +1,4 @@
-package TP1.EJ12;
+package TP1.EJ13;
 
 import TP1.EJ1.ListaEnlazada;
 import TP1.EJ10.Tarea2;
@@ -9,14 +9,17 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class AdministradorDeTareas {
+public class AdministradorDeTareasColaboradores {
     private ListaEnlazada TAREAS;
 
-    public AdministradorDeTareas(){
+    private ListaEnlazada COLABORADORES;
+
+    public AdministradorDeTareasColaboradores(){
         TAREAS = new ListaEnlazada();
     }
 
 
+    // Constructores
     public void nuevaTarea( String descripcion, String titutlo, int prioridad){
         Tarea2 newTarea = new Tarea2(descripcion, titutlo, prioridad);
         this.tareaALista(newTarea);
@@ -33,6 +36,8 @@ public class AdministradorDeTareas {
     public void tareaALista(Tarea2 tarea){
         TAREAS.agregarElemento(tarea);
     }
+
+
 
     public ListaEnlazada tareasActivasPrioridad() {
         // Lista que retorna la función.

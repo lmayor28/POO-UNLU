@@ -1,4 +1,6 @@
-package Clases;
+package TP1.EJ4;
+
+import TP1.EJ1.Nodo;
 
 public class Cola {
     private Nodo head = null;
