@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class EjecutableEJ8 {
     public static void main(String[] strings){
-
         AdministradorDeContrasenias generadorContrasenias = new AdministradorDeContrasenias();
         System.out.println("El generador de contraseñas se ha creado..");
 
@@ -14,6 +13,15 @@ public class EjecutableEJ8 {
         Scanner scanner = new Scanner(System.in);
         generadorContrasenias.generarContrasenias(scanner.nextInt());
         System.out.println("La cantidad de contraseñas generadas es: " + generadorContrasenias.cantidadContrasenias());
-        System.out.println(generadorContrasenias.mostrarContrasenias());
+        System.out.println(generadorContrasenias);
+
+        System.out.print("Ingrese la cantidad de contraseñas FUERTES a generar: ");
+        int cantidadContraSegura = scanner.nextInt();
+        generadorContrasenias.vaciarContrasenias();
+
+        for (int i = 0; i < cantidadContraSegura; i++){
+            generadorContrasenias.generarContraseniaFuerte();
+        }
+        System.out.println(generadorContrasenias);
     }
 }

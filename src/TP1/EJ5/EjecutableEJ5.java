@@ -15,17 +15,18 @@ public class EjecutableEJ5 {
         Tarea tarea3 = new Tarea("Ir al cine a ver la nueva película de Marvel", 3,  LocalDate.now().minusDays(1));
 
         tarea1.mostrarTarea();
+        tarea2.completarTareaConTrampas(LocalDate.now().minusDays(2));
+
         tarea2.mostrarTarea();
         tarea3.mostrarTarea();
 
         System.out.println("\nSe completan todas las tareas.... \n");
         tarea1.completarTarea();
-        tarea2.completarTarea();
+        //tarea2.completarTareaConTrampas(LocalDate.now().minusDays(2));
         tarea3.completarTarea();
 
         tarea1.mostrarTarea();
         tarea2.mostrarTarea();
         tarea3.mostrarTarea();
-
     }
 }

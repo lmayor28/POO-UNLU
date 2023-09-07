@@ -14,7 +14,7 @@ public class Bibloteca {
     }
 
     public ArrayList<Libro> buscarLibroTitulo(String titulo){
-        ArrayList<Libro> librosEncontrados = new ArrayList<Libro>();
+        ArrayList<Libro> librosEncontrados = new ArrayList<>();
         for (Libro libro: libros){
             if (libro.getTitulo().equals(titulo)){
                 librosEncontrados.add(libro);

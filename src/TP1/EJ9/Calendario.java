@@ -4,9 +4,25 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Calendario {
+    public LocalDate transforFechaFromString(String fecha) {
+        fecha = fecha.replaceAll("/", "-");
+        //DateTimeFormatter.ofPattern("fecha");
+        DateTimeFormatter[] formats = {
+                DateTimeFormatter.ofPattern("d-M-yyyy"),
+                DateTimeFormatter.ofPattern("M-d-yyyy")
+        };
 
-    public LocalDate transforFechaFromString(String fecha, int tipo) {
-        //fecha = fecha.replaceAll("/", "-");
+        for (DateTimeFormatter format : formats){
+            try {
+                return LocalDate.parse(fecha, format);
+            } catch (Exception e){
+                // Ignora
+            }
+        }
+
+        return null;
+    }
+        /*
         String[] fechaPartida = fecha.split("/");
         int d, m, y;
 
@@ -27,7 +43,9 @@ public class Calendario {
         };
 
         return LocalDate.of(y, m, d);
-    }
+         */
+
+
     public boolean estaFechaEntreDosFechas(LocalDate fecha, LocalDate fechaInicial, LocalDate fechaFinal){
         if(fecha == null){
             return false;

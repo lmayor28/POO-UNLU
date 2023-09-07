@@ -11,20 +11,18 @@ public class EjecutableEJ9 {
         System.out.println("Se ha creado un calendario que tiene las diferentes funciones para manejar la fecha");
         System.out.println("Se crea una fecha de tipo Time.LocalDate a partir del string '28/3/2001' y con '10/28/2001' .");
 
-        LocalDate fecha1 = calendario.transforFechaFromString("28/3/2001", 1);
-        LocalDate fecha2 = calendario.transforFechaFromString("10/28/2001", 2);
+        LocalDate fecha1 = calendario.transforFechaFromString("28/3/2001");
+        LocalDate fecha2 = calendario.transforFechaFromString("10/28/2001");
 
         System.out.println("Fecha 1: " + fecha1);
         System.out.println("Fecha 2: " + fecha2);
 
         System.out.println("Como se puede ver las dos fechas se formatean en la clase LocalDate sin importar el formato.");
 
-        System.out.println("\nIngresar una fecha para poder decir si esa fecha esta entre las dos fechas anteriores: ");
+        System.out.print("\nIngresar una fecha para poder decir si esa fecha esta entre las dos fechas anteriores: ");
         Scanner scanner = new Scanner(System.in);
         String fechaIngresada = scanner.nextLine();
-        System.out.println("Ingresar el formato con el que se ingreso la fecha(1 para dia/mes/año y 2 para mes/dia/año): ");
-        int formato = scanner.nextInt();
-        LocalDate fechaIngresadaLocalDate = calendario.transforFechaFromString(fechaIngresada, formato);
+        LocalDate fechaIngresadaLocalDate = calendario.transforFechaFromString(fechaIngresada);
 
         System.out.println("Fecha ingresada: " + fechaIngresadaLocalDate);
         System.out.println("La fecha " +

@@ -20,10 +20,7 @@ public class EjecutableEJ10 {
         tarea.mostrarTarea();
 
         tarea.setFechaRecordatorio(LocalDate.now().minusDays(1));
-        System.out.println("\nSe ha modificado la Tarea para tener la misma fecha de vencimiento pero con una fecha de recordatorio para un dia anterior que el de ahora\n");
+        System.out.println("\nSe ha modificado la Tarea para tener la misma fecha de vencimiento pero con una fecha de recordatorio para un dia anterior que el de hoy\n");
         tarea.mostrarTarea();
-
-
-
     }
 }

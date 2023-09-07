@@ -6,12 +6,11 @@ import TP1.EJ5.Tarea;
 
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class AdministradorDeTareas {
-    ListaEnlazada TAREAS;
+    private ListaEnlazada TAREAS;
 
     public AdministradorDeTareas(){
         TAREAS = new ListaEnlazada();
@@ -54,6 +53,7 @@ public class AdministradorDeTareas {
                 tareasPrioridadHM.get(tarea.getPrioridad()).agregarElemento(tarea);
             } else {
                 tareasPrioridadHM.put(tarea.getPrioridad(), new ListaEnlazada());
+                tareasPrioridadHM.get(tarea.getPrioridad()).agregarElemento(tarea);
             }
 
         } // Fin del bucle for
@@ -72,6 +72,69 @@ public class AdministradorDeTareas {
     }
 
     public ListaEnlazada tareasActivaPorProximidad(){
+        ListaEnlazada tareasFechaProximidad = new ListaEnlazada();
 
+        // Se crea un TreeMap para poder ordenar las tareas
+        TreeMap<LocalDate, ListaEnlazada> tareasFechaProximaTM = new TreeMap<>();
+
+
+        for (Object tareaObj : TAREAS){
+            Tarea2 tarea = (Tarea2) tareaObj;
+
+            if (tarea.getEstado() == Tarea.Estado.completa ||
+                tarea.getEstado() == Tarea.Estado.vencida ||
+                tarea.getFechaLimite() == null){
+                continue;
+            }
+
+            if (tareasFechaProximaTM.containsKey(tarea.getFechaLimite())){
+                tareasFechaProximaTM.get(tarea.getFechaLimite()).agregarElemento(tarea);
+            } else {
+                tareasFechaProximaTM.put(tarea.getFechaLimite(), new ListaEnlazada());
+                tareasFechaProximaTM.get(tarea.getFechaLimite()).agregarElemento(tarea);
+            }
+
+        } // Fin del bucle for
+
+        for (Map.Entry<LocalDate, ListaEnlazada> elemento : tareasFechaProximaTM.entrySet()){
+            LocalDate fechaLimite = elemento.getKey();
+            ListaEnlazada tareas = elemento.getValue();
+
+            for (Object tareaObj : tareas){
+                Tarea2 tarea = (Tarea2) tareaObj;
+                tareasFechaProximidad.agregarElemento(tarea);
+            }
+        }
+
+        return  tareasFechaProximidad;
+    }
+
+    public Tarea2 buscarPorTitulo(String titulo){
+        for (Object tareaObj : TAREAS){
+            Tarea2 tarea = (Tarea2) tareaObj;
+            if ( tarea.getTitulo().equals(titulo)){
+                return  tarea;
+            }
+        }
+        return null;
+    }
+
+    public void marcarTerminada(Tarea2 tarea){
+        if (tarea == null){
+            return;
+        }
+        tarea.completarTarea();
+    }
+
+    @Override
+    public String toString(){
+        String resultado = "";
+        for (Object tareaObj : TAREAS){
+            Tarea2 tarea = (Tarea2) tareaObj;
+            resultado += tarea.toString();
+            resultado += "\n\n";
+        }
+
+        return resultado;
     }
 }

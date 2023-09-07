@@ -72,7 +72,7 @@ public class Tarea {
 //    FUNCIONES:
     public void completarTarea(){
         // Si el estado de la tarea NO es incompleta, no hace nada.
-        if (!(this.estado == Estado.incompleta)){
+        if ((this.estado == Estado.vencida || this.estado == Estado.completa)){
             return;
         }
 
@@ -81,6 +81,23 @@ public class Tarea {
 
         // Comprobamos si la tarea es vencida o no y le asignamos su estado correspondiente.
         if(this.fechaLimite.isBefore(LocalDate.now())){
+            this.estado = Estado.vencida;
+            return;
+        }
+        this.estado = Estado.completa;
+    }
+
+    public void completarTareaConTrampas(LocalDate fechaCompletar){
+        // Si el estado de la tarea NO es incompleta, no hace nada.
+        //if (!(this.estado == Estado.incompleta)){
+        //    return;
+        //}
+
+        // Si el estado de la tarea es incompleta marca la fecha de completación.
+        this.fechaCompletada = fechaCompletar;
+
+        // Comprobamos si la tarea es vencida o no y le asignamos su estado correspondiente.
+        if(this.fechaLimite.isBefore(fechaCompletar)){
             this.estado = Estado.vencida;
             return;
         }

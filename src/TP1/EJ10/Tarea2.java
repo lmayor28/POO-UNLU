@@ -48,6 +48,17 @@ public class Tarea2 extends Tarea{
         );
     }
 
+    public String toString(){
+
+        this.revisarEstado();
+        return "Tarea: " + this.getTitulo() +
+                ".\nDescripción: " + getDescripcion() +
+                ".\n Estado: " + getEstado() +
+                ".\n Prioridad: " + getPrioridad() +
+                ".\n Fecha de vencimiento: " + (this.fechaLimite == null ? " Sin definir " : this.fechaLimite) +
+                ".\n Fecha de recordatorio: " + (this.fechaRecordatorio == null ? " Sin definir " : this.fechaRecordatorio);
+    }
+
     private void revisarEstado(){
 //        if ( (this.estado == Estado.incompleta) && (this.fechaLimite != null) ){
 //            if (this.fechaLimite.isBefore(LocalDate.now())){
@@ -85,4 +96,6 @@ public class Tarea2 extends Tarea{
             this.estado = Estado.porVencer;
         }
     }
+
+
 }
