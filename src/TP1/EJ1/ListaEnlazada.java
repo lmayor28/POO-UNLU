@@ -1,4 +1,7 @@
-package Clases;
+package TP1.EJ1;
+
+import TP1.EJ1.Iterador;
+import TP1.EJ1.Nodo;
 
 public class ListaEnlazada implements Iterable<Object> {
     private Nodo primero = null;

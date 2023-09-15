@@ -1,6 +1,6 @@
 package TP1.EJ12;
 
-import Clases.ListaEnlazada;
+import TP1.EJ1.ListaEnlazada;
 import TP1.EJ10.Tarea2;
 
 import java.time.LocalDate;

@@ -1,12 +1,10 @@
-package Ejecutable;
+package TP1.EJ4;
 
-import Clases.Cola;
-
-import java.util.Random;
+import TP1.EJ4.Cola;
 
 public class PruebasCola {
     public static void main(String[] args){
-        System.out.println("Pruebas con Colas: Se carga la cola con numeros aleatorios");
+        System.out.println("Pruebas con Colas: Se carga la cola con numeros aleatorios.");
 
         Cola cola = new Cola();
         for (int i = 1; i<=10; i++){
@@ -14,6 +12,7 @@ public class PruebasCola {
             cola.encolar(i);
         }
 
+        System.out.println("Se desencola los elemetnos y se los muestra por pantalla.");
         while (!cola.esVacia()){
             System.out.println("Objeto: " + cola.recuperar());
             cola.desencolar();

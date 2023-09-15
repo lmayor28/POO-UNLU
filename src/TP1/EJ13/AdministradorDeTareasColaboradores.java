@@ -1,7 +1,6 @@
-package TP1.EJ12;
+package TP1.EJ13;
 
 import TP1.EJ1.ListaEnlazada;
-import TP1.EJ10.Tarea2;
 import TP1.EJ5.Tarea;
 
 import java.time.LocalDate;
@@ -9,30 +8,35 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class AdministradorDeTareas {
+public class AdministradorDeTareasColaboradores {
     private ListaEnlazada TAREAS;
 
-    public AdministradorDeTareas(){
+    private ListaEnlazada COLABORADORES;
+
+    public AdministradorDeTareasColaboradores(){
         TAREAS = new ListaEnlazada();
     }
 
 
+    // Constructores
     public void nuevaTarea( String descripcion, String titutlo, int prioridad){
-        Tarea2 newTarea = new Tarea2(descripcion, titutlo, prioridad);
+        TareaColaborador newTarea = new TareaColaborador(descripcion, titutlo, prioridad);
         this.tareaALista(newTarea);
     }
     public void nuevaTarea( String descripcion, String titulo, int prioridad, LocalDate fechaLimite){
-        Tarea2 newTarea = new Tarea2(descripcion, titulo, prioridad, fechaLimite);
+        TareaColaborador newTarea = new TareaColaborador(descripcion, titulo, prioridad, fechaLimite);
         this.tareaALista(newTarea);
     }
     public void nuevaTarea(String descripcion, String titulo, int prioridad, LocalDate fechaLimite, LocalDate fechaRecordatorio){
-        Tarea2 newTarea = new Tarea2(descripcion, titulo, prioridad, fechaLimite, fechaRecordatorio);
+        TareaColaborador newTarea = new TareaColaborador(descripcion, titulo, prioridad, fechaLimite, fechaRecordatorio);
         this.tareaALista(newTarea);
     }
 
-    public void tareaALista(Tarea2 tarea){
+    public void tareaALista(TareaColaborador tarea){
         TAREAS.agregarElemento(tarea);
     }
+
+
 
     public ListaEnlazada tareasActivasPrioridad() {
         // Lista que retorna la función.
@@ -43,7 +47,7 @@ public class AdministradorDeTareas {
 
         // Bucle que recorre la lista con Tareas
         for (Object tareaObj : TAREAS){
-            Tarea2 tarea = (Tarea2) tareaObj;
+            TareaColaborador tarea = (TareaColaborador) tareaObj;
 
             if (tarea.getEstado() == Tarea.Estado.completa || tarea.getEstado() == Tarea.Estado.vencida){
                 continue;
@@ -63,7 +67,7 @@ public class AdministradorDeTareas {
             ListaEnlazada tareas = elemento.getValue();
 
             for (Object tareaObj : tareas){
-                Tarea2 tarea = (Tarea2) tareaObj;
+                TareaColaborador tarea = (TareaColaborador) tareaObj;
                 tareasPrioridad.agregarElemento(tarea);
             }
         }
@@ -79,7 +83,7 @@ public class AdministradorDeTareas {
 
 
         for (Object tareaObj : TAREAS){
-            Tarea2 tarea = (Tarea2) tareaObj;
+            TareaColaborador tarea = (TareaColaborador) tareaObj;
 
             if (tarea.getEstado() == Tarea.Estado.completa ||
                 tarea.getEstado() == Tarea.Estado.vencida ||
@@ -101,7 +105,7 @@ public class AdministradorDeTareas {
             ListaEnlazada tareas = elemento.getValue();
 
             for (Object tareaObj : tareas){
-                Tarea2 tarea = (Tarea2) tareaObj;
+                TareaColaborador tarea = (TareaColaborador) tareaObj;
                 tareasFechaProximidad.agregarElemento(tarea);
             }
         }
@@ -109,29 +113,44 @@ public class AdministradorDeTareas {
         return  tareasFechaProximidad;
     }
 
-    public Tarea2 buscarPorTitulo(String titulo){
+    public TareaColaborador buscarPorTitulo(String titulo){
         for (Object tareaObj : TAREAS){
-            Tarea2 tarea = (Tarea2) tareaObj;
+            TareaColaborador tarea = (TareaColaborador) tareaObj;
             if ( tarea.getTitulo().equals(titulo)){
                 return  tarea;
             }
         }
         return null;
     }
+    public ListaEnlazada tareaTerminadaPorColaborador(Colaborador colaborador){
+        ListaEnlazada tareasRealizadas = new ListaEnlazada();
+        for (Object tareaObj: TAREAS){
+            TareaColaborador tarea = (TareaColaborador) tareaObj;
+            if (tarea.getEstado() != Tarea.Estado.completa){
+                continue;
+            }
+            if(tarea.getColaboradorTermindo().equals(colaborador)){
+                tareasRealizadas.agregarElemento(tarea);
+            }
+        }
 
-    public void marcarTerminada(Tarea2 tarea){
+        return tareasRealizadas;
+    }
+
+    public void marcarTerminada(TareaColaborador tarea, Colaborador colaborador){
         if (tarea == null){
             return;
         }
-        tarea.completarTarea();
+        tarea.completarTarea(colaborador);
     }
 
     @Override
     public String toString(){
         String resultado = "";
         for (Object tareaObj : TAREAS){
-            Tarea2 tarea = (Tarea2) tareaObj;
+            TareaColaborador tarea = (TareaColaborador) tareaObj;
             resultado += tarea.toString();
+            //resultado += "\nTerminada por: " + (tarea.getEstado() == Tarea.Estado.completa ? tarea.getColaboradorTermindo().getNombre() : " - Sin definir -");
             resultado += "\n\n";
         }
 

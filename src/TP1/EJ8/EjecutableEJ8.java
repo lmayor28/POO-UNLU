@@ -1,7 +1,5 @@
 package TP1.EJ8;
 
-import Clases.ListaEnlazada;
-
 import java.util.Scanner;
 
 public class EjecutableEJ8 {

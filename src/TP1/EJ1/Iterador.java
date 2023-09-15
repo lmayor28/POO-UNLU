@@ -1,4 +1,4 @@
-package Clases;
+package TP1.EJ1;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

@@ -1,7 +1,6 @@
 package TP1.EJ8;
 
-import Clases.Iterador;
-import Clases.ListaEnlazada;
+import TP1.EJ1.ListaEnlazada;
 
 public class AdministradorDeContrasenias {
     private ListaEnlazada contrasenias;
