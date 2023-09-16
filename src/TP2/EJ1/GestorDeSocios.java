@@ -57,7 +57,16 @@ public class GestorDeSocios {
        return resultado;
     }
 
-    public ArrayList<>
+    public ArrayList<Socio> sociosPorSuscripcion(Suscripcion suscripcion){
+        ArrayList<Socio> resultadoSocios = new ArrayList<>();
+        for (Map.Entry<Socio, SocioInfo> entry : socioHM.entrySet()){
+            if (entry.getValue().getTipoSuscripcion() == suscripcion){
+                resultadoSocios.add(entry.getKey());
+            }
+        }
+
+        return resultadoSocios;
+    }
 
 
 
