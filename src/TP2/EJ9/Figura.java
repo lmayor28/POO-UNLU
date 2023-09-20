@@ -24,12 +24,12 @@ public abstract class Figura {
 
     public void calcular(){
         this.medidas.put("Area", calcularArea());
-        this.medidas.put("Volumen", calcularVolumen());
+        //this.medidas.put("Volumen", calcularVolumen());
     }
 
     protected abstract float calcularArea();
     // Lo que hace el atributo abstracto es que obliga a que las clases hijas implementen el metodo.
-    protected abstract float calcularVolumen();
+    // protected abstract float calcularVolumen();
 
     public void validar(){
         for(float dato : medidas.values()){

@@ -1,10 +1,10 @@
 package TP2.EJ9.DosDimensiones;
 
 import TP2.EJ9.Figura;
+import TP2.EJ9.FiguraDosDimensiones;
 
-public class Rectangulo extends Figura {
+public class Rectangulo extends FiguraDosDimensiones {
 
-    private Tipo figura;
     // Para que los datos no sean negativos se los valida para que si son negativos no se crea el objeto.
     public Rectangulo(float base, float altura){
         super(Tipo.cuadrado);
@@ -25,12 +25,6 @@ public class Rectangulo extends Figura {
     @Override
     protected float calcularArea(){
         return m("Base") * m("Altura");
-    }
-
-
-    @Override
-    protected float calcularVolumen(){
-        return 0;
     }
 
 

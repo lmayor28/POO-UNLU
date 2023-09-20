@@ -1,9 +1,9 @@
 package TP2.EJ9.DosDimensiones;
 
 import TP2.EJ9.Figura;
+import TP2.EJ9.FiguraDosDimensiones;
 
-public class Circulo extends Figura
-{
+public class Circulo extends FiguraDosDimensiones{
     public Circulo(float radio) {
         super(Tipo.circulo);
         this.medidas.put("Radio", radio);
@@ -16,12 +16,6 @@ public class Circulo extends Figura
     @Override
     protected float calcularArea() {
         return (float) (Math.PI * Math.pow(m("Radio"), 2));
-    }
-
-
-    @Override
-    protected float calcularVolumen() {
-        return 0;
     }
 
 

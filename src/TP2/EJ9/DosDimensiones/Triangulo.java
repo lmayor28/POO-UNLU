@@ -1,8 +1,9 @@
 package TP2.EJ9.DosDimensiones;
 
 import TP2.EJ9.Figura;
+import TP2.EJ9.FiguraDosDimensiones;
 
-public class Triangulo extends Figura {
+public class Triangulo extends FiguraDosDimensiones {
 
     public Triangulo(float lado1, float lado2, float lado3){
         super(Tipo.triangulo);
@@ -25,12 +26,6 @@ public class Triangulo extends Figura {
     @Override
     protected float calcularArea(){
         return (m("Lado1") * m("Altura")) / 2;
-    }
-
-
-    @Override
-    protected float calcularVolumen(){
-        return 0;
     }
 
     @Override
