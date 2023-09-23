@@ -8,5 +8,9 @@ public abstract class FiguraTresDimensiones extends Figura {
 
     protected abstract float calcularVolumen();
 
-
+    @Override
+    protected void calcular() {
+        super.calcular();
+        this.medidas.put("Volumen", calcularVolumen());
+    }
 }

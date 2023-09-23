@@ -1,6 +1,7 @@
 package TP2.EJ9;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Figura {
     public enum Tipo {
@@ -14,7 +15,7 @@ public abstract class Figura {
         tetraedro
     }
 
-    private final Tipo tipoFigura;
+    protected Tipo tipoFigura;
     protected final HashMap<String, Float> medidas;
 
     public Figura(Tipo tipoFigura){
@@ -22,7 +23,7 @@ public abstract class Figura {
         this.tipoFigura = tipoFigura;
     }
 
-    public void calcular(){
+    protected void calcular(){
         this.medidas.put("Area", calcularArea());
         //this.medidas.put("Volumen", calcularVolumen());
     }
@@ -48,10 +49,32 @@ public abstract class Figura {
     }
 
     protected float m(String key){
-        return medidas.get(key);
+
+        Float value = medidas.get(key);
+        if (value == null) {
+            throw new IllegalArgumentException("La clave " + key + " no es una medida de un: " + this.getTipoFigura());
+        }
+        //return medidas.get(key);
+        return value;
     }
 
     public Tipo getTipoFigura() {
         return tipoFigura;
+    }
+
+    @Override
+    public String toString() {
+        String resultado = "";
+        resultado += "Tipo de Figura: " + tipoFigura + "\n";
+        resultado += "Medidas: \n";
+        for (Map.Entry<String, Float> entry : medidas.entrySet()) {
+            switch (entry.getKey()) {
+                case "Area" -> resultado += "\tArea: " + entry.getValue() + " metros cuadrados\n";
+                case "Volumen" -> resultado += "\tVolumen: " + entry.getValue() + " metros cubicos\n";
+                default -> resultado += "\t" + entry.getKey() + ": " + entry.getValue() + "\n";
+            }
+        }
+
+        return resultado;
     }
 }

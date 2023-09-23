@@ -19,8 +19,8 @@ public class Circulo extends FiguraDosDimensiones{
     }
 
 
-    @Override
-    public String toString() {
-        return "Circulo: " + "Radio: " + m("Radio") + "\nArea: " + getArea() + "\n";
-    }
+//    @Override
+//    public String toString() {
+//        return "Circulo: " + "Radio: " + m("Radio") + "m\nArea: " + getArea() + "\n";
+//    }
 }

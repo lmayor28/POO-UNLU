@@ -9,7 +9,7 @@ public class Rectangulo extends FiguraDosDimensiones {
     public Rectangulo(float base, float altura){
         super(Tipo.cuadrado);
         if (base != altura){
-            this.figura = Tipo.rectangulo;
+            this.tipoFigura = Tipo.rectangulo;
         }
         this.medidas.put("Base", base);
         this.medidas.put("Altura", altura);
@@ -28,8 +28,10 @@ public class Rectangulo extends FiguraDosDimensiones {
     }
 
 
-    @Override
-    public String toString(){
-        return "Cuadrado: " + "Base: " + m("Base") + " Altura: " + m("Altura") + "\nArea: " + getArea() + "\n";
-    }
+//    @Override
+//    public String toString(){
+//        return "Cuadrado: " + "Base: " + m("Base") + "m Altura: " + m("Altura") + "m\nArea: " + getArea() + "m2\n";
+//    }
+
+
 }

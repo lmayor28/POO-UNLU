@@ -1,8 +1,9 @@
 package TP2.EJ9.TresDimensiones;
 
 import TP2.EJ9.Figura;
+import TP2.EJ9.FiguraTresDimensiones;
 
-public class Cubo extends Figura {
+public class Cubo extends FiguraTresDimensiones {
 
     // Para que los datos no sean negativos se los valida para que si son negativos no se crea el objeto.
     public Cubo(float base, float altura, float profundidad){
@@ -32,10 +33,10 @@ public class Cubo extends Figura {
     }
 
 
-    @Override
-    public String toString(){
-        return "Cubo: " + "Base: " + m("Base") + " Altura: " + m("Altura") + " Profundidad: " +
-                m("Profundidad") + "\nArea: " + getArea() +
-                " Volumen: " + getVolumen() + "\n";
-    }
+//    @Override
+//    public String toString(){
+//        return "Cubo: " + "Base: " + m("Base") + " Altura: " + m("Altura") + " Profundidad: " +
+//                m("Profundidad") + "\nArea: " + getArea() +
+//                "m2 Volumen: " + getVolumen() + "m3\n";
+//    }
 }
