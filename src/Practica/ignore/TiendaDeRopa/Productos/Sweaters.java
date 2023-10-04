@@ -11,7 +11,7 @@ public class Sweaters extends Ropa {
 
 
     @Override
-    protected float calcularPrecioVenta(){
+    protected double calcularPrecioVenta(){
         return this.precioLista * porcentajeGanancia;
     }
 

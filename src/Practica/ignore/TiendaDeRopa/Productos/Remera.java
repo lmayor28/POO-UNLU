@@ -9,7 +9,7 @@ public class Remera extends Ropa {
     }
 
     @Override
-    protected float calcularPrecioVenta() {
+    protected double calcularPrecioVenta() {
         return (this.precioLista + 100) * porcentajeGanancia;
     }
 

@@ -1,12 +1,14 @@
 package Practica.ignore.TiendaDeRopa;
 
-public abstract class Ropa {
+import Practica.ignore.TiendaDeRopa.Productos.IProducto;
+
+public abstract class Ropa implements IProducto {
     public enum Tarjetas {
         comun,
         dorada
     }
 
-    protected float precioLista;
+    protected double precioLista;
     protected float porcentajeGanancia;
 
 
@@ -16,16 +18,23 @@ public abstract class Ropa {
         this.porcentajeGanancia = 1.1f;
     }
 
+    public void setPrecioLista(double nuevoPrecio) {
+        this.precioLista = nuevoPrecio;
+    }
+
     public void setPrecioLista(Float nuevoPrecio){
         this.precioLista = nuevoPrecio;
     }
-    public float getPrecioVenta(){
+    public double getPrecioVenta(){
         return calcularPrecioVenta();
     }
+    public double getPrecioVenta(Tarjetas tarjeta){
+        return  calcularPrecioVenta(tarjeta);
+    }
 
-    protected abstract float calcularPrecioVenta();
+    protected abstract double calcularPrecioVenta();
 
-    protected float calcularPrecioVenta(Tarjetas tarjeta){
+    protected double calcularPrecioVenta(Tarjetas tarjeta){
         return switch (tarjeta) {
             case comun -> (getPrecioVenta() * 0.99f);
             case dorada -> (getPrecioVenta() * 0.985f - 100);

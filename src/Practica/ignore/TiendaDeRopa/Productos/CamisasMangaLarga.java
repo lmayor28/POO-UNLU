@@ -12,7 +12,7 @@ public class CamisasMangaLarga extends Ropa {
     }
 
     @Override
-    protected float calcularPrecioVenta(){
+    protected double calcularPrecioVenta(){
         System.out.println(this.porcentajeGanancia);
         return (this.precioLista * porcentajeGanancia);
     }
