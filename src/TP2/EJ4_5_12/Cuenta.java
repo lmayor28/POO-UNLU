@@ -18,7 +18,7 @@ public abstract class Cuenta {
 
     @Override
     public String toString() {
-        return " -> Saldo disponible: " + saldoDisponible;
+        return "\n -> Saldo disponible: " + saldoDisponible;
     }
 
 

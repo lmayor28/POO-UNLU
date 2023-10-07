@@ -1,22 +1,24 @@
 package TP2.EJ11;
 
 public class Alquiler {
-    private int dias;
-    private Cliente cliente;
-    private Vehiculo vehiculo;
-    private double montoTotal;
+
+    private Presupuesto presupuesto;
+
+    private final double montoTotalDefinitivo;
     private int id;
 
-    public Alquiler(Cliente cliente, Vehiculo vehiculo, int dias,  double montoTotal) {
-        this.cliente = cliente;
-        this.vehiculo = vehiculo;
-        this.dias = dias;
-        this.montoTotal = montoTotal;
+    public Alquiler(Presupuesto presupuesto) {
+        this.presupuesto = presupuesto;
+        montoTotalDefinitivo = presupuesto.getPrecioPresupuestado();
+    }
+
+    public double getMontoTotalDefinitivo(){
+        return montoTotalDefinitivo;
     }
 
     @Override
     public String toString() {
-        return "ALQUILER: " + id + "\n -> Cliente: " + cliente + "\n -> Vehiculo: " + vehiculo + "\n -> Dias: " + dias + "\n-> Monto Total: " + montoTotal;
+        return "ALQUILER: " + id + "\n -> " + presupuesto.getCliente() + "\n -> Vehiculo: " + presupuesto.getVehiculo() + "\n -> Dias: " + presupuesto.getDias() + "\n-> Monto Total: " + montoTotalDefinitivo;
 
     }
 }

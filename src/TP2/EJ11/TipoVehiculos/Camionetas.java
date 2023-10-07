@@ -22,4 +22,8 @@ public class Camionetas extends Vehiculo {
         double precio = this.getPrecioBase() + (this.precioPorPAT * this.PAT);
         this.setPrecio(precio);
     }
+
+    public double getPrecioPAT() {
+        return this.PAT * this.precioPorPAT;
+    }
 }

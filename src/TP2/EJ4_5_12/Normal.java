@@ -1,19 +1,18 @@
 package TP2.EJ4_5_12;
 
-import org.jetbrains.annotations.TestOnly;
 
 public class Normal extends Cuenta{
 
 //    hora queremos agregar una nueva feature a las cuentas. La inversión realizada se puede cancelar en cualquier momento, pero el interés devuelto no va a ser del 40%, sino solo del 5% si al menos pasaron 30 días. Además, se puede activar la opción de precancelar automáticamente: cuando un usuario realiza un gasto mayor a su saldo, la inversión se precancela para que no gire en descubierto (o para que lo haga pero por un monto mucho menor).
 
-    private double limiteGiroDescubierto;
+    private final double limiteGiroDescubierto;
     private double giroDescubiertoGastado;
-    private boolean enInversion;
-    private double montoInversion;
+    protected boolean enInversion;
+    protected double montoInversion;
 
-    private boolean autoCancelarIntereses;
+    protected boolean autoCancelarIntereses;
 
-    private int diasPasadosEnInversion;
+    protected int diasPasadosEnInversion;
 
     public Normal(double saldo, double limiteGiroDescubierto) {
         super(saldo);
@@ -32,7 +31,7 @@ public class Normal extends Cuenta{
             if (autoCancelarIntereses){
                 if (gastarConInversion(montoAPagar)){
                     return true;
-                };
+                }
             }
 
             return gastarGiroDescubierto(montoAPagar);
@@ -63,7 +62,9 @@ public class Normal extends Cuenta{
             return false;
         }
 
-        return retirarInversion(INTERES_INVERSION_CANCELADA);
+        retirarInversion(INTERES_INVERSION_CANCELADA);
+
+        return gastar(montoAPagar);
     }
 
     public boolean cargarCuenta(double montoCargar){
@@ -91,8 +92,15 @@ public class Normal extends Cuenta{
             return false;
         }
 
+        if (montoInversion > saldoDisponible){
+            return false;
+        }
+
         this.montoInversion = montoInversion;
         enInversion = true;
+        diasPasadosEnInversion = 0;
+        saldoDisponible -= montoInversion;
+
         return true;
     }
 
@@ -101,9 +109,11 @@ public class Normal extends Cuenta{
             return false;
         }
 
-        if (PLAZO_DIAS_INVERSION > diasPasadosEnInversion){
+        if (PLAZO_DIAS_INVERSION < diasPasadosEnInversion){
             saldoDisponible += montoInversion + (montoInversion * INTERES_INVERSION);
             enInversion = false;
+            diasPasadosEnInversion = 0;
+            montoInversion = 0;
             return true;
         }
 
@@ -129,9 +139,12 @@ public class Normal extends Cuenta{
             return false;
         }
 
-        if (PLAZO_DIAS_INVERSION > diasPasadosEnInversion){
+        if (PLAZO_DIAS_INVERSION < diasPasadosEnInversion){
             saldoDisponible += montoInversion + (montoInversion * intereses);
             enInversion = false;
+            montoInversion = 0;
+            diasPasadosEnInversion = 0;
+
             return true;
         }
 
@@ -145,7 +158,7 @@ public class Normal extends Cuenta{
 
         double estimadoGanancias = 0;
 
-        if (PLAZO_DIAS_INVERSION > diasPasadosEnInversion){
+        if (PLAZO_DIAS_INVERSION < diasPasadosEnInversion){
             estimadoGanancias = montoInversion + (montoInversion * INTERES_INVERSION_CANCELADA);
             return estimadoGanancias;
         }
@@ -181,7 +194,15 @@ public class Normal extends Cuenta{
 
     @Override
     public String toString(){
-        return "Cuenta: Normal\n" + super.toString() + "\n -> Limite Giro Descubierto: " + limiteGiroDescubierto + "\n -> Giro Descubierto Gastado: " + giroDescubiertoGastado + "\n -> En Inversion: " + enInversion +
+        return
+                super.toString() +
+                "\n -> Limite Giro en Descubierto: " + limiteGiroDescubierto +
+                "\n -> Giro en Descubierto Gastado: " + giroDescubiertoGastado +
+                "\n -> En Inversion: " + enInversion +
+                "\n -> Dias en inversion: " + this.diasPasadosEnInversion +
+                "\n -> Total invertido: " + this.montoInversion +
+                "\n -> Auto Cancelar Intereses: " + this.autoCancelarIntereses ;
+
     }
 
 
